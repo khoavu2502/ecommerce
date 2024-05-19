@@ -31,9 +31,16 @@ public class ProductRestController {
         return productService.findAll();
     }
 
-    @GetMapping("/products/search")
+    // search products by category id
+    @RequestMapping(value = "/products/search", method = RequestMethod.GET, params = "categoryId")
     public List<ProductDTO> getProductsByCategoryId(@RequestParam Long categoryId) {
         return productService.findByCategoryId(categoryId);
+    }
+
+    // search products by product name
+    @RequestMapping(value = "/products/search", method = RequestMethod.GET, params = "name")
+    public List<ProductDTO> getProductsByName(@RequestParam String name) {
+        return productService.findByName(name);
     }
 
     @DeleteMapping("/products/{id}")
