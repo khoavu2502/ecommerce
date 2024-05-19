@@ -51,6 +51,15 @@ public class ProductServiceImpl implements ProductService {
                 .toList();
     }
 
+    // search product by keyword
+    @Override
+    public List<ProductDTO> findByName(String name) {
+        List<Product> products = productRepository.findByNameContaining(name);
+        return products.stream()
+                       .map(product -> modelMapper.map(product, ProductDTO.class))
+                       .toList();
+    }
+
     @Override
     @Transactional
     public void deleteById(Long id) {
