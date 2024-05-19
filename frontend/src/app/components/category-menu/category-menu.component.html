@@ -1,0 +1,5 @@
+<ul>
+    <li *ngFor="let category of categories" class="mb-3">
+      <a routerLink="/category/{{category.id}}" class="hover:text-gray-500">{{category.categoryName}}</a>
+    </li>
+  </ul>
