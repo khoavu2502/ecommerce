@@ -3,15 +3,13 @@
       <h1 class="mb-5 font-semibold text-xl">Products</h1>
   
       <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-        <a href="#" class="group mr-10 mb-5" *ngFor="let curProduct of products">
+        <a routerLink="/products/{{curProduct.id}}" class="group mr-10 mb-5" *ngFor="let curProduct of products">
             <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
                 <img src="{{curProduct.imageUrl}}" alt="Tall slender porcelain bottle with natural clay textured body and cork stopper." class="h-full w-full object-cover object-center group-hover:opacity-75"/>
             </div>
             <h3 class="mt-4 text-sm text-gray-700 whitespace-nowrap">{{curProduct.name}}</h3>
             <p class="my-3 text-lg font-medium text-gray-900">{{curProduct.unitPrice | currency: 'USD'}}</p>
-            <a href="#" class="text-white bg-blue-700 px-4 py-2 rounded-md hover:bg-blue-800">Add to cart</a>
         </a>
       </div>
     </div>
   </div>
-  
