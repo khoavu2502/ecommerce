@@ -5,21 +5,17 @@
         <img src="assets/images/logo.svg" alt="Ecommerce logo" class="mr-3 h-8"/>
         <span class="self-center text-xl font-semibold whitespace-nowrap">Ecommerce</span>
       </a>
-      <form class="ml-5" onsubmit="return false;" method="GET">
-        <input type="search" id="default-search" class="px-4 py-3 mr-3 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for data..." required />
-        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
-      </form>
+      <app-search></app-search>
     </div>
-    <a href="shopping-detail.html" class="flex items-center">
-      <div class="total mr-2"><span class="bg-amber-500 px-3 py-2 rounded-l-full">19.22</span> <span class="bg-blue-400 px-3 py-2 rounded-r-full">2</span> </div>
-      <img src="assets/images/cart.svg" alt="Ecommerce logo" class="mr-3 h-8"/>
-    </a>
+    <app-cart-status></app-cart-status>
   </header>
 
   <div class="flex flex-row flex-grow">
     <aside class="px-10 whitespace-nowrap pt-10 bg-gray-100">
+      <!-- CATEGORY SIDEBAR -->
       <app-category-menu></app-category-menu>
     </aside>
+
     <div>
       <!-- MAIN CONTENT -->
       <router-outlet></router-outlet>
