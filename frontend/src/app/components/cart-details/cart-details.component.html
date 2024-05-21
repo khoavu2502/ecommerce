@@ -1,0 +1,65 @@
+<section *ngIf="cartItems.length > 0" class="py-8 px-4 bg-white md:py-16 dark:bg-gray-900 antialiased w-full flex flex-row">
+    <table class="bg-white rounded-lg shadow-md mr-5 h-fit">
+        <thead>
+            <tr>
+                <th class="text-left font-semibold px-10">Product</th>
+                <th class="text-left font-semibold px-10">Price</th>
+                <th class="text-left font-semibold px-10">Quantity</th>
+                <th class="text-left font-semibold px-10">Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let tempCartItem of cartItems">
+                <td class="py-4 px-10">
+                    <div class="flex items-center">
+                        <img class="h-16 w-16 mr-4" src="{{ tempCartItem.imageUrl }}" alt="Product image">
+                        <span class="font-semibold">{{ tempCartItem.name }}</span>
+                    </div>
+                </td>
+                <td class="py-4 px-10">{{ tempCartItem.unitPrice | currency: "USD"}}</td>
+                <td class="py-4 px-10">
+                    <div class="flex items-center">
+                        <button (click)="decrementQuantity(tempCartItem)" class="border rounded-md py-2 px-4 mr-2">-</button>
+                        <span class="text-center w-8">{{ tempCartItem.quantity }}</span>
+                        <button (click)="incrementQuantity(tempCartItem)" class="border rounded-md py-2 px-4 ml-2">+</button>
+                    </div>
+                </td>
+                <td class="py-4 px-5">{{ tempCartItem.unitPrice * tempCartItem.quantity | currency: "USD" }}</td>
+                <td>
+                    <img (click)="remove(tempCartItem)" src="assets/images/delete.png" alt="Ecommerce logo" class="h-4 mr-2 hover: cursor-pointer"/>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="flex-grow h-fit px-10 py-5 bg-white rounded-lg shadow-md">
+        <h2 class="text-lg font-semibold mb-4">Summary</h2>
+        <div class="flex justify-between mb-2">
+            <span>Subtotal</span>
+            <span>{{ totalPrice | currency: 'USD' }}</span>
+        </div>
+        <div class="flex justify-between mb-2">
+            <span>Quantity</span>
+            <span>{{ totalQuantity }}</span>
+        </div>
+        <div class="flex justify-between mb-2">
+            <span>Taxes</span>
+            <span>$0.00</span>
+        </div>
+        <div class="flex justify-between mb-2">
+            <span>Shipping</span>
+            <span>$0.00</span>
+        </div>
+        <hr class="my-2">
+        <div class="flex justify-between mb-2">
+            <span class="font-semibold">Total</span>
+            <span class="font-semibold">{{ totalPrice | currency: 'USD' }}</span>
+        </div>
+        <button class="bg-blue-500 text-white py-2 px-4 rounded-lg mt-4 w-full">Checkout</button>
+    </div>
+</section>
+
+<!-- Cart is empty -->
+<div *ngIf="cartItems.length == 0" class="p-4 mt-4 mx-10 text-sm text-yellow-500 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-yellow-300" role="alert">
+    <span class="font-medium">Your cart is empty now!!! </span>
+    <a routerLink="/products" class="hover:text-yellow-900 ">Buy new items</a>
+</div>
