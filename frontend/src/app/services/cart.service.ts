@@ -35,6 +35,25 @@ export class CartService {
     this.computeCartTotal();
   }
 
+  decrementQuantity(cartItem: CartItem) {
+    cartItem.quantity--;
+    if (cartItem.quantity === 0) {
+      this.remove(cartItem);
+    } else {
+      this.computeCartTotal();
+    }
+  }
+
+  remove(cartItem: CartItem) {
+    const itemIndex = this.cartItems.findIndex(currentItem => currentItem.id === cartItem.id);
+
+    if (itemIndex > -1) {
+      this.cartItems.splice(itemIndex, 1);
+
+      this.computeCartTotal();
+    }
+  }
+
   computeCartTotal() {
     let totalPriceValue: number = 0
     let totalQuantityValue: number = 0;
