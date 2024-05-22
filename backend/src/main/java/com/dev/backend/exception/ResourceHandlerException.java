@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
 public class ResourceHandlerException {
+
     @ExceptionHandler
     public ResponseEntity<ResourceErrorResponse> handleException(ResourceNotFoundException exc) {
         ResourceErrorResponse error = new ResourceErrorResponse();

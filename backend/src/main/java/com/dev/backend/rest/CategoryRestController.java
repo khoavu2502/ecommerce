@@ -19,17 +19,17 @@ public class CategoryRestController {
     private final CategoryService categoryService;
 
     @PostMapping("/categories")
-    public CategoryDTO addProductCategory(@RequestBody Category category) {
+    public CategoryDTO addCategory(@RequestBody Category category) {
         return categoryService.save(category);
     }
 
     @GetMapping("/categories/{id}")
-    public Optional<CategoryDTO> getProductCategory(@PathVariable Long id) {
+    public Optional<CategoryDTO> getCategory(@PathVariable Long id) {
         return categoryService.findById(id);
     }
 
     @GetMapping("/categories")
-    public List<CategoryDTO> getProductCategories() {
+    public List<CategoryDTO> getCategories() {
         return categoryService.findAll();
     }
 
@@ -39,12 +39,12 @@ public class CategoryRestController {
     }
 
     @PatchMapping("/categories")
-    public CategoryDTO updateProductCategory(@RequestBody Category category) {
+    public CategoryDTO updateCategory(@RequestBody Category category) {
         return categoryService.save(category);
     }
 
     @DeleteMapping("/categories/{id}")
-    public void deleteProductCategory(@PathVariable Long id) {
+    public void deleteCategory(@PathVariable Long id) {
         categoryService.deleteById(id);
     }
 }

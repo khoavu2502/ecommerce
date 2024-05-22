@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class ResourceErrorResponse {
+
     private int status;
 
     private String message;
