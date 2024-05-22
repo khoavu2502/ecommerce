@@ -12,6 +12,7 @@ import java.util.Date;
 @Table(name = "product")
 @Data
 public class Product {
+
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
